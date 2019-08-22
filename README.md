@@ -18,6 +18,7 @@ kubectl exec demo ps aux<br />
 kubectl exec demo cat /proc/1/mounts<br />
 kubectl exec demo ls /<br />
 kubectl exec -it demo -- /bin/bash<br />
+kubectl exec -it demo -c demo-container1 -- /bin/bash<br />
 7. Getting logs for a pod<br />
 kubectl logs demo<br />
 
