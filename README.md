@@ -1,5 +1,6 @@
 # Architecting with Google Kubernetes Engine - Workloads - 20190822
 
+//== The kubectl Command/Introspection ==
 ## Command Line
 1. List of Pods in a cluster<br />
 kubectl get pods<br />
@@ -16,19 +17,26 @@ kubectl get pods -o=yaml<br />
 kubectl get pods -o=wide<br />
 7. Getting a list of Pods<br />
 kubectl get pods<br />
+kubectl get pod my-test-app<br />
+kubectl get pod my-test-app -o=yaml<br />
+kubectl get pods -o=wide<br />
 8. Describing a Pod<br />
+kubectl describe pod [POD_NAME]<br />
 kubectl describe pod demo<br />
 9. Running a command within a pod<br />
+kubectl exec [POD_NAME] -- [command]<br />
 kubectl exec demo env<br />
 kubectl exec demo ps aux<br />
 kubectl exec demo cat /proc/1/mounts<br />
 kubectl exec demo ls /<br />
+kubectl exec -it [POD_NAME] -- [command]<br />
 kubectl exec -it demo -- /bin/bash<br />
 kubectl exec -it demo -c demo-container1 -- /bin/bash<br />
 10. Getting logs for a pod<br />
+kubectl logs [POD_NAME]<br />
 kubectl logs demo<br />
 
-//== AK8S-04 Creating a GKE Cluster via Cloud Shell<br />
+//== AK8S-04 Creating a GKE Cluster via Cloud Shell ==
 1. Create a Kubernetes cluster<br />
 export my_zone=us-central1-a<br />
 export my_cluster=standard-cluster-1<br />
