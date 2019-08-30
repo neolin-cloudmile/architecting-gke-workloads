@@ -37,21 +37,25 @@
 	```
 8. Describing a Pod<br />
 	```
-	kubectl describe pod [POD_NAME]<br />
-	kubectl describe pod demo<br />
+	kubectl describe pod [POD_NAME]
+	kubectl describe pod demo
 	```
 9. Running a command within a pod<br />
-kubectl exec [POD_NAME] -- [command]<br />
-kubectl exec demo env<br />
-kubectl exec demo ps aux<br />
-kubectl exec demo cat /proc/1/mounts<br />
-kubectl exec demo ls /<br />
-kubectl exec -it [POD_NAME] -- [command]<br />
-kubectl exec -it demo -- /bin/bash<br />
-kubectl exec -it demo -c demo-container1 -- /bin/bash<br />
+	```
+	kubectl exec [POD_NAME] -- [command]
+	kubectl exec demo env
+	kubectl exec demo ps aux
+	kubectl exec demo cat /proc/1/mounts
+	kubectl exec demo ls /
+	kubectl exec -it [POD_NAME] -- [command]
+	kubectl exec -it demo -- /bin/bash
+	kubectl exec -it demo -c demo-container1 -- /bin/bash
+	```
 10. Getting logs for a pod<br />
-kubectl logs [POD_NAME]<br />
-kubectl logs demo<br />
+	```
+	kubectl logs [POD_NAME]
+	kubectl logs demo
+	```
 
 ### AK8S-04 Creating a GKE Cluster via Cloud Shell
 1. Create a Kubernetes cluster<br />
