@@ -78,7 +78,7 @@
 	```
 	kubectl cluster-info
 	```
-5. print out the active context<br />
+5. Print out the active context<br />
 	```
 	kubectl config current-context
 	```
@@ -151,7 +151,7 @@
 	kubectl logs new-nginx -f --timestamps
 	```
 
-### Create Deployments
+### Deployments
 
 1. There are three ways to create a Deployment<br />
 	a. Command
@@ -168,6 +168,87 @@
 	--save-config
 	```
 	c. GCP Console
+2. Output the Deployment config in a YAML format
+	```
+	kubectl get deployment [DEPLOYMENT_NAME]
+	kubectl get deployment nginx-deployment
+	kubectl get deployment [DEPLOYMENT_NAME] -o yaml > this.yaml
+	```
+3. Use the 'describe' command to get detailed info
+	```
+	kubectl describe deployment [DEPLOYMENT_NAME]
+	```
+
+### Deployments - Scaling Deployments
+1. Scaling a Deployment manually
+	```
+	kubectl scale deployment [DEPLOYMENT_NAME] -replicas=5
+	```
+2. Autoscaling a Deployment
+	```
+	kubectl autoscale deployment [DEPLOYMENT_NAME] --min=5 --max=15 --cpu-percent=75
+	```
+### Updating Deployments - Updating Deployments (Rolling Update)
+
+1. Updating a Deployment
+	```
+	kubectl apply -f [DEPLOYMENT_FILE]
+	kubectl set image deployment [DEPLOYMENT_NAME] [IMAGE] [IMAGE]:[TAG]
+	```
+	```
+	kubectl edit \
+	  deployment/[DEPLOYMENT_NAME]
+	```
+	```
+	GCP Console - Rolling update
+	```
+
+### Updating Deployments - Bule-Green Deployments
+1. Applying a bule/green deployment strategy
+	```
+	kubectl apply -f my-app-v2.yaml
+	```
+	```
+	kubectl patch service my-app-service -p \
+	'{"spec":{"selector":{"version":"v2"}}}
+	```
+
+### Updating Deployments - Canary Deployments
+1. Applying a canary deployment
+	```
+	kubectl apply -f my-app-v2.yaml
+	kubectl scale deploy/my-app-v2 -replicas=10
+	kubectl delete -f my-app-v1.yaml
+	```
+2. Rolling back a Deployment
+	```
+	kubectl rollout undo deployment
+	```
+	```
+	kubectl rollout undo deployment [DEPLOYMENT_NAME] --to-revision=2
+	```
+	```
+	kubectl rollout history deployment [DEPLOYMENT_NAME] --revision=2
+	```
+
+### Managing Deployments - MAnaging Deployments
+1. Pasuing a Deployment
+	```
+	kubectl rollout pause deployment [DEPLOYMENT_NAME]
+	```
+2. Resuming a Deployment
+	```
+	kubectl rollout resume deployment [DEPLOYMENT_NAME]
+	```
+3. Monitoring a Deployment
+	```
+	kubectl rollout status deployment [DEPLOYMENT_NAME]
+	```
+4. Deleting a Deployment
+	```
+	kubectl delete deployment [DEPLOYMENT_NAME]
+	```
+
 
 ## Reference Link
 1. Cloud SDK - gcloud Reference - gcloud container - get-credentials<br />
