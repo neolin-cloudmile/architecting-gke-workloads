@@ -88,6 +88,17 @@ curl http://127.0.0.1:10081/test.html<br />
 21. Display the logs and to stream new logs as they arrive (and also include timestamps) for the new-nginx Pod<br />
 kubectl logs new-nginx -f --timestamps
 
+//== Create Deployments ==
+1. There are three ways to create a Deployment
+a.kubectl apply -f [DEVELOYMENT_FILE]
+b.kubectl run [DEPLOYMENT_NAME] \
+--image [IMAGE]:[TAG] \
+--labels [KEY]=[VALUE] \
+--port 8080 \
+--generatoe deployment/apps.v1 \
+--save-config
+c.GCP console
+
 ## Reference Link
 1. Cloud SDK - gcloud Reference - gcloud container - get-credentials<br />
 https://cloud.google.com/sdk/gcloud/reference/container/clusters/get-credentials<br />
