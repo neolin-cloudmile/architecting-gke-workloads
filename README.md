@@ -4,17 +4,17 @@
 ### The kubectl Command/Introspection
 
 1. List of Pods in a cluster<br />
-```
-kubectl get pods
-```
+	```
+	kubectl get pods
+	```
 2. kubectl must be configured first<br />
-```
-$HOME/.kube/config
-```
+	```
+	$HOME/.kube/config
+	```
 3. Current config<br />
-```
-kubectl config view
-```
+	```
+	kubectl config view
+	```
 4. gcloud container clusters get-credentials - fetch credentials for a running cluster<br />
 	```
 	gcloud container clusters get-credentials testcluster1 \
