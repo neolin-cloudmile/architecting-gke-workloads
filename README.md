@@ -3,7 +3,9 @@
 ## Command Line
 //== The kubectl Command/Introspection ==
 1. List of Pods in a cluster<br />
+```markdown
 kubectl get pods<br />
+```
 2. kubectl must be configured first<br />
 $HOME/.kube/config<br />
 3. Current config<br />
