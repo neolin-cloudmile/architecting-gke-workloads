@@ -154,20 +154,20 @@
 ### Create Deployments
 
 1. There are three ways to create a Deployment<br />
+	a. Command
 	```
-	a.kubectl apply -f [DEVELOYMENT_FILE]
+	kubectl apply -f [DEVELOYMENT_FILE]
 	```
+	b. Command
 	```
-	b.kubectl run [DEPLOYMENT_NAME] \
+	kubectl run [DEPLOYMENT_NAME] \
 	--image [IMAGE]:[TAG] \
 	--labels [KEY]=[VALUE] \
 	--port 8080 \
 	--generatoe deployment/apps.v1 \
 	--save-config
 	```
-	```
-	c.GCP console
-	```
+	c. GCP Console
 
 ## Reference Link
 1. Cloud SDK - gcloud Reference - gcloud container - get-credentials<br />
