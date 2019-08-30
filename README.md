@@ -90,14 +90,14 @@ kubectl logs new-nginx -f --timestamps
 
 //== Create Deployments ==
 1. There are three ways to create a Deployment
-a.kubectl apply -f [DEVELOYMENT_FILE]
-b.kubectl run [DEPLOYMENT_NAME] \
+<br />a.kubectl apply -f [DEVELOYMENT_FILE]
+<br />b.kubectl run [DEPLOYMENT_NAME] \
 --image [IMAGE]:[TAG] \
 --labels [KEY]=[VALUE] \
 --port 8080 \
 --generatoe deployment/apps.v1 \
 --save-config
-c.GCP console
+<br />c.GCP console
 
 ## Reference Link
 1. Cloud SDK - gcloud Reference - gcloud container - get-credentials<br />
