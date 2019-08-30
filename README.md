@@ -231,7 +231,7 @@
 	kubectl rollout history deployment [DEPLOYMENT_NAME] --revision=2
 	```
 
-### Managing Deployments - MAnaging Deployments
+### Managing Deployments - Managing Deployments
 1. Pasuing a Deployment
 	```
 	kubectl rollout pause deployment [DEPLOYMENT_NAME]
@@ -249,6 +249,89 @@
 	kubectl delete deployment [DEPLOYMENT_NAME]
 	```
 
+### Jobs and Cronjons - Jobs and Cronjobs
+1. A non-parallel job computing pi to 2000 places
+	```
+	kubectl apply -f [JOB_FILE]
+	```
+	```
+	kubectl run pi --image perl --restart Never -- perl -Mbignum bpi -wle 'print bpi(2000)'
+	```
+
+### Jobs and Cronjobs - Parallel Jobs
+1. Inspecting a Job
+	```
+	kubectl describe job [JOB_NAME]
+	kubectl get pods -l [job-name=my-app-job]
+	```
+2. Scaling a Job
+	```
+	kubectl scale job [JOB_NAME] --replicas [VALUE]
+	```
+3. Deleting a Job
+	```
+	kubectl delete -f [JOB_FILE]
+	kubectl delete job [JOB_NAME]
+	```
+4. Retaining Job Pods
+	```
+	kubectl delete job [JOB_NAME] --cascade false
+	```
+
+### Jobs and Cronjobs - Cron Jobs
+1. CronJobs can be managed using kubectl
+	a. Create a CronJon
+	```
+	kubectl apply -f []FILE
+	```
+	b. Inspect a CronJob
+	```
+	kubectl describe cronjob [NAME]
+	```
+	c. Delete a CronJob
+	```
+	kubectl delete cronjob [NAME]
+	```
+
+### Cluster Scaling - Cluster Scalling
+1. Scaling a cluster using the gcloud command
+	```
+	gcloud container clusters resize projectdemo --node-pool default-pool \
+	--size 6
+	```
+
+### Cluster Scaling - Node Pools
+1. gcloud commands for autoscaling
+	a. Create a cluster with autoscaling enabled
+	```
+	gcloud container clusters create [CLUSTER_NAME] --num-nodes 30 \
+	--enabled-autoscaling --min-nodes 15 \
+	--max-nodes 50 [--zone COMPUTE_ZONE]
+	```
+	b. Add a node pool with autoscaling enabled
+	```
+	gcloud container node-pools create [POOL_NAME] --cluster [CLUSTER_NAME] \
+	--enable-autoscaling --min-nodes 15 \
+	--max-nodes 50 [--zone COMPUTE_ZONE]
+	```
+	c. Enable autoscaling for an existing node pool
+	```
+	gcloud container clusters update [CLUSTER_NAME] \
+	--enable-autoscaling \
+	--min-nodes 1 --max-nodes 10 \
+	--zone [COMPUTE_ZONE] --node-pool [POOL_NAME]
+	```
+	d. Disable autoscaling for an existing node pool
+	```
+	gcloud container clusters update [CLUSTER_NAME] --no-enable-autoscaling \
+	--node-pool [POOL_NAME] [--zone [COMPUTE_ZONE] --project [PROJECT_ID]]
+	```
+
+### Controlling Pod Placement - Taints and Tolerations
+1. Taints allow a node to repel Pods
+	```
+	kubectl taint nodes node1 key=value:NoSchedule
+	```
 
 ## Reference Link
 1. Cloud SDK - gcloud Reference - gcloud container - get-credentials<br />
