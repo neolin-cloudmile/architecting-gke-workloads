@@ -21,17 +21,25 @@
 	--zone=us-central1-f
 	```
 5. Kubectl to give you output in YAML format<br />
-kubectl get pods -o=yaml<br />
+	```
+	kubectl get pods -o=yaml
+	```
 6. To display the list of pods and wide format for more information<br />
-kubectl get pods -o=wide<br />
+	```
+	kubectl get pods -o=wide
+	```
 7. Getting a list of Pods<br />
-kubectl get pods<br />
-kubectl get pod my-test-app<br />
-kubectl get pod my-test-app -o=yaml<br />
-kubectl get pods -o=wide<br />
+	```
+	kubectl get pods
+	kubectl get pod my-test-app
+	kubectl get pod my-test-app -o=yaml
+	kubectl get pods -o=wide
+	```
 8. Describing a Pod<br />
-kubectl describe pod [POD_NAME]<br />
-kubectl describe pod demo<br />
+	```
+	kubectl describe pod [POD_NAME]<br />
+	kubectl describe pod demo<br />
+	```
 9. Running a command within a pod<br />
 kubectl exec [POD_NAME] -- [command]<br />
 kubectl exec demo env<br />
