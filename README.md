@@ -1,7 +1,7 @@
 # Architecting with Google Kubernetes Engine - Workloads - 20190822
 
-//== The kubectl Command/Introspection ==
 ## Command Line
+//== The kubectl Command/Introspection ==
 1. List of Pods in a cluster<br />
 kubectl get pods<br />
 2. kubectl must be configured first<br />
