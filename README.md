@@ -266,7 +266,7 @@ Task 1. Create deployment manifests and deploy to the cluster
 	kubectl apply -f ./nginx-deployment.yaml
 	kubectl get deployments
 	```
-Task 2. Manually scale up and down the number of Pods in deployments
+<br />Task 2. Manually scale up and down the number of Pods in deployments
 	a. Scale Pods up and down in the console
 	b. Scale Pods up and down in the shell
 	```
