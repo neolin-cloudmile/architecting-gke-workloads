@@ -249,6 +249,62 @@
 	kubectl delete deployment [DEPLOYMENT_NAME]
 	```
 
+### AK8S-06 Creating Kubernetes Engine Deployments
+1. Task 1. Create deployment manifests and deploy to the cluster
+	a. Creae a GKE cluster
+	```
+	export my_zone=us-central1-a
+	export my_cluster=standard-cluster-1
+	source <(kubectl completion bash)
+	gcloud container clusters create $my_cluster --num-nodes 3  --enable-ip-alias --zone $my_zone
+	gcloud container clusters get-credentials $my_cluster --zone $my_zone
+	git clone https://github.com/GoogleCloudPlatformTraining/training-data-analyst
+	cd ~/training-data-analyst/courses/ak8s/06_Deployments/
+	```
+	b. Create a deployment manifest
+	```
+	kubectl apply -f ./nginx-deployment.yaml
+	kubectl get deployments
+	```
+2. Task 2. Manually scale up and down the number of Pods in deployments
+	a. Scale Pods up and down in the console
+	b. Scale Pods up and down in the shell
+	```
+	kubectl get deployments
+	kubectl scale --replicas=3 deployment nginx-deployment
+	kubectl get deployments
+	```
+3. Tasl 3. Trigger a deplotment rollout and a deployment rollback
+	a. Trigger a deployment rollout
+	```
+	kubectl set image deployment.v1.apps/nginx-deployment nginx=nginx:1.9.1 --record
+	kubectl rollout status deployment.v1.apps/nginx-deployment
+	kubectl get deployments
+	kubectl rollout history deployment nginx-deployment
+	```
+	b. Trigger a deployment rollback
+	```
+	kubectl rollout undo deployments nginx-deployment
+	kubectl rollout history deployment nginx-deployment
+	kubectl rollout history deployment/nginx-deployment --revision=3
+	```
+4. Task 4. Define the service type in the manifest
+	a. Define service types in the manifest
+	```
+	kubectl apply -f ./service-nginx.yaml
+	```
+	b. Verify the LoadBalancer creation
+	```
+	kubectl get service nginx
+	```
+5. Task 5. Perform a canary deployment
+	```
+	kubectl apply -f nginx-canary.yaml
+	kubectl get deployments
+	kubectl scale --replicas=0 deployment nginx-deployment
+	kubectl get deployments
+	```
+
 ### Jobs and Cronjons - Jobs and Cronjobs
 1. A non-parallel job computing pi to 2000 places
 	```
