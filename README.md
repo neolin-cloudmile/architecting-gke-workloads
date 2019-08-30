@@ -1,18 +1,25 @@
 # Architecting with Google Kubernetes Engine - Workloads - 20190822
 
 ## Command Line
-//== The kubectl Command/Introspection ==
+### The kubectl Command/Introspection
+
 1. List of Pods in a cluster<br />
-```markdown
+```
 kubectl get pods
 ```
 2. kubectl must be configured first<br />
-$HOME/.kube/config<br />
+```
+$HOME/.kube/config
+```
 3. Current config<br />
-kubectl config view<br />
+```
+kubectl config view
+```
 4. gcloud container clusters get-credentials - fetch credentials for a running cluster<br />
-gcloud container clusters get-credentials testcluster1 \ <br />
---zone=us-central1-f<br />
+	```
+	gcloud container clusters get-credentials testcluster1 \
+	--zone=us-central1-f
+	```
 5. Kubectl to give you output in YAML format<br />
 kubectl get pods -o=yaml<br />
 6. To display the list of pods and wide format for more information<br />
@@ -38,7 +45,7 @@ kubectl exec -it demo -c demo-container1 -- /bin/bash<br />
 kubectl logs [POD_NAME]<br />
 kubectl logs demo<br />
 
-//== AK8S-04 Creating a GKE Cluster via Cloud Shell ==
+### AK8S-04 Creating a GKE Cluster via Cloud Shell
 1. Create a Kubernetes cluster<br />
 export my_zone=us-central1-a<br />
 export my_cluster=standard-cluster-1<br />
@@ -90,7 +97,7 @@ curl http://127.0.0.1:10081/test.html<br />
 21. Display the logs and to stream new logs as they arrive (and also include timestamps) for the new-nginx Pod<br />
 kubectl logs new-nginx -f --timestamps
 
-//== Create Deployments ==
+### Create Deployments
 1. There are three ways to create a Deployment
 <br />a.kubectl apply -f [DEVELOYMENT_FILE]
 <br />b.kubectl run [DEPLOYMENT_NAME] \
