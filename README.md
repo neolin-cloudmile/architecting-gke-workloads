@@ -250,7 +250,7 @@
 	```
 
 ### AK8S-06 Creating Kubernetes Engine Deployments
-1. Task 1. Create deployment manifests and deploy to the cluster
+Task 1. Create deployment manifests and deploy to the cluster
 	a. Creae a GKE cluster
 	```
 	export my_zone=us-central1-a
@@ -266,7 +266,7 @@
 	kubectl apply -f ./nginx-deployment.yaml
 	kubectl get deployments
 	```
-2. Task 2. Manually scale up and down the number of Pods in deployments
+Task 2. Manually scale up and down the number of Pods in deployments
 	a. Scale Pods up and down in the console
 	b. Scale Pods up and down in the shell
 	```
@@ -274,7 +274,7 @@
 	kubectl scale --replicas=3 deployment nginx-deployment
 	kubectl get deployments
 	```
-3. Tasl 3. Trigger a deplotment rollout and a deployment rollback
+Task 3. Trigger a deplotment rollout and a deployment rollback
 	a. Trigger a deployment rollout
 	```
 	kubectl set image deployment.v1.apps/nginx-deployment nginx=nginx:1.9.1 --record
@@ -288,7 +288,7 @@
 	kubectl rollout history deployment nginx-deployment
 	kubectl rollout history deployment/nginx-deployment --revision=3
 	```
-4. Task 4. Define the service type in the manifest
+Task 4. Define the service type in the manifest
 	a. Define service types in the manifest
 	```
 	kubectl apply -f ./service-nginx.yaml
@@ -297,7 +297,7 @@
 	```
 	kubectl get service nginx
 	```
-5. Task 5. Perform a canary deployment
+Task 5. Perform a canary deployment
 	```
 	kubectl apply -f nginx-canary.yaml
 	kubectl get deployments
